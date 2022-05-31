@@ -18,6 +18,8 @@
   },
   "homepage": "https://gitlab.com/Petherson/curso-cypress-intermediario#readme",
   "devDependencies": {
-    "cypress": "^3.8.0"
+    "@faker-js/faker": "^7.1.0",
+    "cypress": "^3.8.0",
+    "faker": "^5.5.3"
   }
 }
