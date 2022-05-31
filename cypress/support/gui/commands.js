@@ -29,6 +29,19 @@ Cypress.Commands.add('gui_createProject', (data) => {
     cy.get('@blankProject')
         .find('textarea[id="project_description"]')
         .type(data.description)
-    cy.get('input[id="project_initialize_with_readme"]').check()
-    cy.contains('Create project').click()
+    cy.get('input[id="project_initialize_with_readme"]')
+        .check()
+    cy.contains('Create project')
+        .click()
+})
+
+Cypress.Commands.add('gui_createIssue', (data) => {
+    cy.visit(`${Cypress.env('user_name')}/${data.project.name}/issues/new`)
+
+    cy.get('input[id="issue_title"]')
+        .type(data.title)
+    cy.get('textarea[id="issue_description"]')
+        .type(data.description)
+    cy.contains('Submit issue')
+        .click()  
 })
