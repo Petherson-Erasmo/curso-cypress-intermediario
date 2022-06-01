@@ -43,5 +43,23 @@ Cypress.Commands.add('gui_createIssue', (data) => {
     cy.get('textarea[id="issue_description"]')
         .type(data.description)
     cy.contains('Submit issue')
-        .click()  
+        .click()
+})
+
+Cypress.Commands.add('gui_setLabelOnIssue', data => {
+    cy.get('a[class*="qa-edit-link-labels"]')
+        .click()
+    cy.contains(data.name)
+        .click()
+    cy.get('body')
+        .click()
+})
+
+
+Cypress.Commands.add('gui_setMilestoneOnIssue', milestone => {
+    cy.get('.block.milestone')
+        .find('a[class*="edit-link"]')
+        .click()
+    cy.contains(milestone.title)
+        .click()
 })
