@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './gui/commands'
 import './api/commands'
+import './cli/commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
