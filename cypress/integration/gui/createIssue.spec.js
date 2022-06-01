@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 
 const faker = require('faker')
-const { fa } = require('faker/lib/locales')
 
 describe('Create Issue', ()=> {
     
