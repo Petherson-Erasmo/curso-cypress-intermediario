@@ -1,14 +1,32 @@
-/// <reference types="cypress" />
+Cypress.Commands.add('login', (
+    user = Cypress.env('user_name'),
+    password = Cypress.env('user_password'),
+    { cacheSession = true } = {},
+) => {
+    const login = () => {
+        cy.visit('/users/sign_in')
 
-Cypress.Commands.add('login', () => {
-    cy.visit('users/sign_in')
+        cy.get("[data-qa-selector='login_field']").type(user)
+        cy.get("[data-qa-selector='password_field']").type(password, { log: false })
+        cy.get("[data-qa-selector='sign_in_button']").click()
+    }
 
-    cy.get('input[data-qa-selector="login_field"]')
-        .type(Cypress.env('user_name'))
-    cy.get('input[data-qa-selector="password_field"]')
-        .type(Cypress.env('user_password'))
-    cy.get('input[data-qa-selector="sign_in_button"]')
-        .click()
+    const validate = () => {
+        cy.visit('/')
+        cy.location('pathname', { timeout: 1000 })
+            .should('not.eq', '/users/sign_in')
+    }
+
+    const options = {
+        cacheAcrossSpecs: true,
+        validate,
+    }
+
+    if (cacheSession) {
+        cy.session(user, login, options)
+    } else {
+        login()
+    }
 })
 
 Cypress.Commands.add('logout', () => {
@@ -57,7 +75,7 @@ Cypress.Commands.add('gui_setLabelOnIssue', data => {
 
 
 Cypress.Commands.add('gui_setMilestoneOnIssue', milestone => {
-    cy.get('.block.milestone')
+    cy.get('div[class*="block milestone"]')
         .find('a[class*="edit-link"]')
         .click()
     cy.contains(milestone.title)

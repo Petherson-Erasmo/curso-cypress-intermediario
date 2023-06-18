@@ -1,11 +1,13 @@
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
-describe('Set label on issue', () => {
+const options = { env: { snapshotOnly: true } }
+
+describe('Set label on issue', options, () => {
     const issue = {
-        title: `issue-${faker.random.uuid()}`,
+        title: `issue-${faker.datatype.uuid()}`,
         description: faker.random.words(3),
         project: {
-            name: `project-${faker.random.uuid()}`,
+            name: `project-${faker.datatype.uuid()}`,
             description: faker.random.words(5)
         }
     }
@@ -16,6 +18,7 @@ describe('Set label on issue', () => {
     }
 
     beforeEach(() => {
+        cy.api_deleteProjects()
         cy.login()
         cy.api_createIssue(issue)
             .then(response => {

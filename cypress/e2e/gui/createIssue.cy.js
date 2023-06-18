@@ -1,19 +1,20 @@
-/// <reference types="Cypress" />
+import { faker } from '@faker-js/faker'
 
-const faker = require('faker')
+const options = { env: { snapshotOnly: true } }
 
-describe('Create Issue', ()=> {
+describe('Create Issue', options, () => {
     
     const  issue = {
-        title: `issue-${faker.random.uuid()}`,
+        title: `issue-${faker.datatype.uuid()}`,
         description: faker.random.words(6),
         project: {
-            name: `project-${faker.random.uuid()}`,
+            name: `project-${faker.datatype.uuid()}`,
             description: faker.random.words(7)
         }
     }
     
     beforeEach(() => {
+        cy.api_deleteProjects()
         cy.login()
         cy.api_createProject(issue.project)
     })

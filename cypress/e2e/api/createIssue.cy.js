@@ -1,15 +1,16 @@
-/// <reference types="Cypress" />
-
-const faker = require('faker')
+import { faker } from '@faker-js/faker'
 
 describe('Create Issue', () => {
+    beforeEach(() => {
+        cy.api_deleteProjects()
+    })
 
     it('Successfully', () => {
         const issue = {
-            title: `issue-${faker.random.uuid()}`,
+            title: `issue-${faker.datatype.uuid()}`,
             description: faker.random.words(6),
             project: {
-                name: `project-${faker.random.uuid()}`,
+                name: `project-${faker.datatype.uuid()}`,
                 description: faker.random.words(7)
             }
         }
