@@ -1,26 +1,30 @@
 {
   "name": "curso-cypress-intermediario",
   "version": "1.0.0",
-  "description": "[Curso intermediário de automação de testes com Cypress](http://talkingabouttesting.coursify.me/courses/testes-automatizados-com-cypress-intermediario) da Escola Talking About Testing.",
-  "main": "index.js",
+  "description": "Repositório do projeto do curso de testes automatizados com Cypress (intermdiário) da Escola TAT no Udemy",
+  "main": "cypress.config.js",
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/Petherson/curso-cypress-intermediario.git"
+    "url": "git+https://github.com/wlsf82/cypress-intermediario-v2.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Cypress intermediário",
+    "Talking About Testing",
+    "E2E Testing"
+  ],
+  "author": "Walmyr Filho <wlsf82@gmail.com> (https://walmyr.dev/)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/Petherson/curso-cypress-intermediario/issues"
+    "url": "https://github.com/wlsf82/cypress-intermediario-v2/issues"
   },
-  "homepage": "https://gitlab.com/Petherson/curso-cypress-intermediario#readme",
+  "homepage": "https://github.com/wlsf82/cypress-intermediario-v2#readme",
   "devDependencies": {
-    "@faker-js/faker": "^7.1.0",
-    "cypress": "^9.7.0",
-    "faker": "^5.5.3"
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "^12.0.2",
+    "cypress-plugin-api": "^2.6.1"
   }
 }
